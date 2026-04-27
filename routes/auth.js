@@ -28,6 +28,7 @@ router.post('/register', async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.error("Register Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -48,6 +49,7 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ message: 'Invalid credentials' });
     }
   } catch (error) {
+    console.error("Login Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });

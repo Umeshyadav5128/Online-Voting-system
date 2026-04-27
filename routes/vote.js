@@ -10,6 +10,7 @@ router.get('/candidates', protect, async (req, res) => {
     const candidates = await Candidate.find({});
     res.json(candidates);
   } catch (error) {
+    console.error("Get Candidates Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -36,6 +37,7 @@ router.post('/', protect, async (req, res) => {
 
     res.json({ message: 'Vote cast successfully', hasVoted: true });
   } catch (error) {
+    console.error("Cast Vote Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });

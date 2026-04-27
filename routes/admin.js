@@ -9,6 +9,7 @@ router.get('/results', protect, admin, async (req, res) => {
     const candidates = await Candidate.find({}).sort({ voteCount: -1 });
     res.json(candidates);
   } catch (error) {
+    console.error("Get Results Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });
@@ -20,6 +21,7 @@ router.post('/candidate', protect, admin, async (req, res) => {
     const candidate = await Candidate.create({ name, party });
     res.status(201).json(candidate);
   } catch (error) {
+    console.error("Add Candidate Error:", error);
     res.status(500).json({ message: 'Server error' });
   }
 });
